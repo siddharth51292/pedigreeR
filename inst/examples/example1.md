@@ -1,9 +1,10 @@
-#### Example: completing & sorting a pedigree
+#### Example: Completing & sorting a pedigree
 
 A valid pedigree object is a pedigree that is : 
 * Complete : Any individual that appears as ancestor must also appear as a row in the pedigree, and 
 * Sorted :  Ancestors must preceed progeny in the pedigree.
-The functions ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function editPed() and the creation of a pedigree object.
+
+The function ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function editPed() in the creation of a valid pedigree object from an incomplete and scrambled pedigree.
 
 | Subject  |      Sire     |  Dam |
 |----------:|-------------:|------:|
@@ -23,9 +24,9 @@ The functions ```editPed()``` can be used to complete and sort pedigrees. In the
 | 14	| 8| 13
 
 
-#### Example: Computing inbreeding, additive relationships and functions of it.
+### Scrambling the above pedigree and Rendering it Incomplete. 
 
-
+Below we show example code that scrambles the valid example pedigree object.
 ```R
 pede<-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
                   dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
