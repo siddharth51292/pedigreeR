@@ -1,4 +1,4 @@
-#### Example: Completing & sorting a pedigree
+### Example: Completing & sorting a pedigree
 
 A valid pedigree object is a pedigree that is : 
 * Complete : Any individual that appears as ancestor must also appear as a row in the pedigree, and 
@@ -24,7 +24,7 @@ The function ```editPed()``` can be used to complete and sort pedigrees. In the 
 | 14	| 8| 13
 
 
-### Scrambling the above pedigree and Rendering it Incomplete. 
+#### Scrambling the above pedigree and Rendering it Incomplete. 
 
 Below we show example code that scrambles the valid example pedigree object.
 ```R
