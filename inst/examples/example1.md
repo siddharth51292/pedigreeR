@@ -1,6 +1,10 @@
-#### Example: completing & sorting a pedigree
+#### Example: Creating a Valid Pedigree Object 
 
-Before creating a pedigree object, the pedigree must be: (i) completed, that is, any individual that appears as ancestor must also appear as a row in the pedigree, and (ii) sorted, so that ancestors preceed progeny in the pedigree. The functions ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function editPed() and the creation of a pedigree object.
+A valid pedigree object is a pedigree that is : 
+*Complete : Any individual that appears as ancestor must also appear as a row in the pedigree, and 
+*Sorted :  Ancestors must preceed progeny in the pedigree. 
+
+The functions ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function editPed() and the creation of a pedigree object.
 
 | Subject  |      Sire     |  Dam |
 |----------:|-------------:|------:|
