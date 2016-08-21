@@ -28,8 +28,8 @@ The function ```editPed()``` can be used to complete and sort pedigrees. In the 
 
 Below we show example code that scrambles the valid example pedigree object.
 ```R
-## Create the example pedigree
-pede<-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
+        ## Create the example pedigree
+        pede<-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
                   dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
                   label=as.character(1:14))
         ## Scrambling the pedigree :
