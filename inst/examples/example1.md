@@ -54,7 +54,32 @@ Below is some more example code that :
         PedFinal<- with(PedEdit, pedigree(label=label, sire=sire, dam=dam))
 
 ```
-The object PedFinal is a valid pedigree object that can be used for further analysis with PedigreeR and pedigreemm.
+The object PedFinal is a valid pedigree object that can be used for further analysis with PedigreeR and pedigreemm. This is what it should look like for this example : 
+
+```
+>PedFinal
+   sire  dam
+1  <NA> <NA>
+2  <NA> <NA>
+3  <NA> <NA>
+4  <NA> <NA>
+5  <NA> <NA>
+7     3    2
+8     5 <NA>
+6     1    2
+11    8 <NA>
+9     6    7
+10    4    7
+13   10    9
+12    1    9
+14    8   13
+
+> str(PedFinal)
+Formal class 'pedigree' [package "pedigreeR"] with 3 slots
+  ..@ sire : int [1:14] NA NA NA NA NA 3 5 1 7 8 ...
+  ..@ dam  : int [1:14] NA NA NA NA NA 2 NA 2 NA 6 ...
+  ..@ label: chr [1:14] "1" "2" "3" "4" ...
+```
 
 [Home](https://github.com/Rpedigree/pedigreeR)
  
