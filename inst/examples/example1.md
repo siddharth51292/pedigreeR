@@ -56,7 +56,7 @@ Below is some more example code that :
 ```
 The object PedFinal is a valid pedigree object that can be used for further analysis with PedigreeR and pedigreemm. This is what it should look like for this example : 
 
-```
+```R
 >PedFinal
    sire  dam
 1  <NA> <NA>
@@ -79,6 +79,7 @@ Formal class 'pedigree' [package "pedigreeR"] with 3 slots
   ..@ sire : int [1:14] NA NA NA NA NA 3 5 1 7 8 ...
   ..@ dam  : int [1:14] NA NA NA NA NA 2 NA 2 NA 6 ...
   ..@ label: chr [1:14] "1" "2" "3" "4" ...
+
 ```
 
 [Home](https://github.com/Rpedigree/pedigreeR)
