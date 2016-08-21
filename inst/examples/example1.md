@@ -1,9 +1,9 @@
-### Example: Completing & sorting a pedigree
+### Example 1: Completing & sorting a pedigree
 
 A valid pedigree object is a pedigree that is : 
 * Complete : Any individual that appears as ancestor must also appear as a row in the Pedigree. 
 * Sorted :  Ancestors must preceed progeny in the Pedigree.
-* Formal Class : It is an S4 object of formal class 'Pedigree'. ( See Example B )
+* Formal Class : It is an S4 object of formal class 'Pedigree'. ( See Section B )
 
 The function ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function ```editPed()``` in the creation of a valid pedigree object from an incomplete and scrambled pedigree.
 
@@ -25,7 +25,7 @@ The function ```editPed()``` can be used to complete and sort pedigrees. In the 
 | 14	| 8| 13
 
 
-#### Example A : Scrambling the above pedigree and Rendering it Incomplete. 
+#### Section A : Scrambling the above pedigree and Rendering it Incomplete. 
 
 Here is some example code that : 
 * Creates an incomplete version of the pedigree by omitting rows that correspond to four of the five 1st generation parents. 
@@ -40,7 +40,7 @@ Here is some example code that :
         PedScramb <- PedInc[sample(replace=FALSE, 1:10),] 
 
 ```
-#### Example B : Reconstructing the complete, sorted Pedigree and converting it into a valid 'Pedigree' object
+#### Section B : Reconstructing the complete, sorted Pedigree and converting it into a valid 'Pedigree' object
 
 Below is some more example code that :
 * Completes and sorts the incomplete pedigree using ```editPed``` and returns a DataFrame.
