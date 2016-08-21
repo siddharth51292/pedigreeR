@@ -5,7 +5,7 @@ A valid pedigree object is a pedigree that is :
 * Sorted :  Ancestors must preceed progeny in the Pedigree.
 * Formal Class : It is an S4 object of formal class 'Pedigree'. ( See Example B )
 
-The function ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function editPed() in the creation of a valid pedigree object from an incomplete and scrambled pedigree.
+The function ```editPed()``` can be used to complete and sort pedigrees. In the following example we use the small pedigree printed below to illustrate the use of the function ```editPed()``` in the creation of a valid pedigree object from an incomplete and scrambled pedigree.
 
 | Subject  |      Sire     |  Dam |
 |----------:|-------------:|------:|
@@ -43,8 +43,8 @@ Here is some example code that :
 #### Example B : Reconstructing the complete, sorted Pedigree and converting it into a valid 'Pedigree' object
 
 Below is some more example code that :
-* Completes and sorts the incomplete pedigree using '''editPed''' and returns a DataFrame.
-* Uses the function '''pedigree''' to convert the DataFrame representation into an S4 object of formal class 'Pedigree'. 
+* Completes and sorts the incomplete pedigree using ```editPed``` and returns a DataFrame.
+* Uses the function ```pedigree``` to convert the DataFrame representation into an S4 object of formal class 'Pedigree'. 
 
 ```R 
         ## Complete and sort incomplete Pedigree using editPed
