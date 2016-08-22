@@ -5,7 +5,7 @@ Following the last example, we create a valid pediree object from a DataFrame re
 pedFrame <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
                   dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
                   label=as.character(1:14))
-        pedFrame <- editPed(sire=pede$sire, dam= pede$dam, label=pede$label) 
+        pedFrame <- editPed(sire=pedFrame$sire, dam= pedFrame$dam, label=pedFrame$label) 
         ped <- with(pedFrame, pedigree(label=label, sire=sire, dam=dam))
 
 ```
