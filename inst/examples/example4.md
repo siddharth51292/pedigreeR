@@ -66,6 +66,11 @@ library(pedigreeR)
 Aself <- getASelfing(ID=pedCycles$label,Par1=pedCycles$sire,Par2=pedCycles$dam,nCycles=pedCycles$nCycles,nCyclesDefault=0)
 
 ```
+We also create the matrix A from the pedigree before selfing following the method outlined in example 1:
+
+```R
+A <- getA(pedNoCycles)
+```
 Visualizing the difference matrix of ```Aself``` and ```A``` shows us that only the members 8,11,13 and 14 are different, as is expected.
 
 ```R
