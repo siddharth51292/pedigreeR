@@ -79,6 +79,7 @@ diff <- Aself - A
 image(diff)
 
 ```
+https://github.com/siddharth51292/pedigreeR/blob/patch-2/inst/examples/diffMatrix.png
 
 [Home](https://github.com/Rpedigree/pedigreeR)
  
