@@ -1,4 +1,4 @@
-#### Example: Computing inbreeding, additive genetic relationship matrix A and its inverse.
+### Example: Computing inbreeding, additive genetic relationship matrix A and its inverse.
 
 Following the last example, we create a valid pediree object from a DataFrame representation of the example pedigree:
 ```R
@@ -9,7 +9,7 @@ pedFrame <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
         ped <- with(pedFrame, pedigree(label=label, sire=sire, dam=dam))
 
 ```
-### Section A : Obtaining A, Ainv and Inbreeding coefficients 
+#### Section A : Obtaining A, Ainv and inbreeding coefficients 
 
 It must be noted here that it is computationally cheaper to set up the inverse of the A matrix than to set up A and then invert it. Hence we compute A or Ainv from the functions ```getA``` or ```getAInv``` as needed. 
 
