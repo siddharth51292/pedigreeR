@@ -28,7 +28,7 @@ Get the inverse of A
 
 Below we show a visualization for the Ainv matrix for the example pedigree:
 
-<img src="https://github.com/Rpedigree/pedigreeR/blob/master/inst/examples/pedA.jpg" width="500">
+<img src="https://github.com/siddharth51292/pedigreeR/blob/patch-2/inst/examples/Ainv.png" width="500">
 
 [Home](https://github.com/Rpedigree/pedigreeR)
  
