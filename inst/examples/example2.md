@@ -1,26 +1,32 @@
-#### Example: Computing inbreeding, additive relationships and functions of it.
+#### Example: Computing inbreeding, additive genetic relationship matrix A and its inverse.
 
-Creates a pedigree object
+Following the last example, we create a valid pediree object from a DataFrame representation of the example pedigree:
 ```R
-pede<-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
+pedFrame <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
                   dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
                   label=as.character(1:14))
-        pede<- editPed(sire=pede$sire, dam= pede$dam, label=pede$label) 
-        ped<- with(pede, pedigree(label=label, sire=sire, dam=dam))
+        pedFrame <- editPed(sire=pede$sire, dam= pede$dam, label=pede$label) 
+        ped <- with(pedFrame, pedigree(label=label, sire=sire, dam=dam))
 
 ```
-Compute the inbreeding of that pedigree
+### Section A : Obtaining A, Ainv and Inbreeding coefficients 
+
+It must be noted here that it is computationally cheaper to set up the inverse of the A matrix than to set up A and then invert it. Hence we compute A or Ainv from the functions ```getA``` or ```getAInv``` as needed. 
+
+Compute the inbreeding coefficients of that pedigree
 ```R
-inbreeding(ped)
+inb <- inbreeding(ped)
 ```
 Get the additive genetic relationship matrix
 ```R
- getAInv(ped)
+ A <- getA(ped)
 ```
 Get the inverse of A
  ```R
- image(A<-getA(ped))
+ Ainv <- getAInv(ped)
 ```
+
+Below we show a visualization for the Ainv matrix for the example pedigree:
 
 <img src="https://github.com/Rpedigree/pedigreeR/blob/master/inst/examples/pedA.jpg" width="500">
 
