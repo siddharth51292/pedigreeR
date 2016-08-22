@@ -1,8 +1,8 @@
-#### Example: Pedigree analyses for self-polinated species.
+### Example: Pedigree analyses for self-polinated species.
 
 Here we illustrate the use of the function ```getASelfing``` in the computation of the A matrix from an example pedigree which contains information on number of selfing cycles (```nCycles```), and illustrate the differences in the A matrix with and without taking selfing into account. 
 
-### Section A: Creation of example ```data.frame``` pedigrees with and without selfing cycles
+#### Section A: Creation of example ```data.frame``` pedigrees with and without selfing cycles
 
 Here is an example pedigree similar to the one used previously ( see Example 1 ) with an additional column called ```nCycles```. 
 
