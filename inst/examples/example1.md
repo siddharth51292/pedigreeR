@@ -25,7 +25,7 @@ The function ```editPed()``` can be used to complete and sort pedigrees. In the 
 | 14	| 8| 13
 
 
-#### Section A : Scrambling the above pedigree and Rendering it Incomplete. 
+#### Section A : Scrambling the above pedigree and rendering it incomplete. 
 
 Here is some example code that : 
 * Creates an incomplete version of the pedigree by omitting rows that correspond to four of the five 1st generation parents. 
@@ -57,7 +57,8 @@ Below is some more example code that :
 The object PedFinal is a valid pedigree object that can be used for further analysis with PedigreeR and pedigreemm. This is what it should look like for this example : 
 
 ```R
->PedFinal
+PedFinal
+
    sire  dam
 1  <NA> <NA>
 2  <NA> <NA>
@@ -74,7 +75,8 @@ The object PedFinal is a valid pedigree object that can be used for further anal
 12    1    9
 14    8   13
 
-> str(PedFinal)
+str(PedFinal)
+
 Formal class 'pedigree' [package "pedigreeR"] with 3 slots
   ..@ sire : int [1:14] NA NA NA NA NA 3 5 1 7 8 ...
   ..@ dam  : int [1:14] NA NA NA NA NA 2 NA 2 NA 6 ...
