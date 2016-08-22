@@ -1,4 +1,4 @@
-### Example: Computing inbreeding, additive genetic relationship matrix A and its inverse.
+### Example 2: Computing inbreeding, additive genetic relationship matrix A and its inverse.
 
 Following the last example, we create a valid pediree object from a ```data.frame``` representation of the example pedigree:
 ```R
