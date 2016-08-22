@@ -1,6 +1,6 @@
 ### Example: Computing inbreeding, additive genetic relationship matrix A and its inverse.
 
-Following the last example, we create a valid pediree object from a DataFrame representation of the example pedigree:
+Following the last example, we create a valid pediree object from a ```data.frame``` representation of the example pedigree:
 ```R
 pedFrame <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
                   dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
