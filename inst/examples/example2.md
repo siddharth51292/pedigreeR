@@ -13,7 +13,7 @@ pedFrame <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
 
 It must be noted here that it is computationally cheaper to set up the inverse of the A matrix than to set up A and then invert it. Hence we compute A or Ainv from the functions ```getA``` or ```getAInv``` as needed. 
 
-Compute the inbreeding coefficients of that pedigree
+Compute the inbreeding coefficients of the pedigree
 ```R
 inb <- inbreeding(ped)
 ```
