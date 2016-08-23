@@ -40,7 +40,7 @@ Here is some example code that :
         PedScramb <- PedInc[sample(replace=FALSE, 1:10),] 
 
 ```
-#### Section B : Reconstructing the complete, sorted Pedigree and converting it into a valid 'Pedigree' object
+#### Section B : Reconstructing the complete, sorted pedigree and converting it into a valid 'Pedigree' object
 
 Below is some more example code that :
 * Completes and sorts the incomplete pedigree using ```editPed``` and returns a DataFrame.
