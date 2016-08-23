@@ -2,9 +2,16 @@
 
 Here we illustrate the use of the function ```getASelfing``` in the computation of the A matrix from an example pedigree which contains information on number of selfing cycles (```nCycles```), and illustrate the differences in the A matrix before and after taking selfing into account. 
 
+
 #### Section A: Creation of example ```data.frame``` pedigrees with and without selfing cycles
 
-Below is an example pedigree ( identical to the one in Example 1 ) before taking selfing into account.
+Below we create an example pedigree ( identical to the one in Example 1 ) before taking selfing into account.
+
+```R
+pedNoCycles <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
+                      dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
+                      label=as.character(1:14))
+```
 
 | Subject  |      Sire     |  Dam |
 |----------:|-------------:|------:|
@@ -24,15 +31,16 @@ Below is an example pedigree ( identical to the one in Example 1 ) before taking
 | 14	| 8| 13
 
 
-```R
-pedNoCycles <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
-                      dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
-                      label=as.character(1:14))
-```
 
-Below is an example pedigree similar to the one used previously with an additional column called ```nCycles``` that takes selfing into account. 
+Here we create an example pedigree similar to the one used previously with an additional column called ```nCycles``` that takes selfing into account. 
 
 Note that this pedigree must be complete and sorted ( see Example 1 )before using it with the functions in Section B.
+
+```R
+pedCycles <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
+                      dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
+                      label=as.character(1:14),nCycles=c(0,0,0,0,0,0,0,5,0,0,0,0,3,0))
+```
 
 | Subject  |      Sire     |  Dam | nCycles |
 |----------:|-------------:|------:|-------:|
@@ -51,11 +59,6 @@ Note that this pedigree must be complete and sorted ( see Example 1 )before usin
 | 13	| 10| 9 | 3|
 | 14	| 8| 13 | 0|
 
-```R
-pedCycles <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
-                      dam= as.character(c(NA,NA,NA,NA,NA,2,2,NA,7,7,NA,9,9,13)),
-                      label=as.character(1:14),nCycles=c(0,0,0,0,0,0,0,5,0,0,0,0,3,0))
-```
 
 #### Section B: Computation of the additive relationship matrix using the function ```getASelfing```
 
