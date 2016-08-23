@@ -44,15 +44,15 @@ Here is some example code that :
 
 Below is some more example code that :
 * Completes and sorts the incomplete pedigree using ```editPed``` and returns a DataFrame.
-* Uses the function ```pedigree``` to convert the DataFrame representation into an S4 object of formal class 'Pedigree'. 
+* Uses the function ```pedigree``` to convert the data frame representation into an S4 object of formal class 'Pedigree'. 
 
 ```R    
         library(pedigreeR)
         
         ## Complete and sort incomplete Pedigree using editPed
-        PedSorted<- editPed(sire=PedScram$sire, dam= PedScram$dam, label=PedScram$label) 
+        PedEdit<- editPed(sire=PedScram$sire, dam= PedScram$dam, label=PedScram$label) 
         
-        ## Converted the DataFrame PedSorted into an S4 object of formal class 'Pedigree'
+        ## Converted the data frame PedEdit into an S4 object of formal class 'Pedigree'
         PedFinal<- with(PedEdit, pedigree(label=label, sire=sire, dam=dam))
 
 ```
