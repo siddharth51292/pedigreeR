@@ -62,6 +62,8 @@ pedCycles <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8)),
 
 #### Section B: Computation of the additive relationship matrix using the function ```getASelfing```
 
+Here we create the matrix Aself from ```pedCycles``` using getAselfing which computes the additive relationship matrix from the pedigree given the information contained in ```nCycles```.
+
 ```R
 
 library(pedigreeR)
