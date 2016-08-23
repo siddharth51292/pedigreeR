@@ -30,7 +30,7 @@ pedNoCycles <-data.frame(sire=as.character(c(NA,NA,NA,NA,NA,1,3,5,6,4,8,1,10,8))
                       label=as.character(1:14))
 ```
 
-Here is an example pedigree similar to the one used previously with an additional column called ```nCycles``` that takes selfing into account. 
+Below is an example pedigree similar to the one used previously with an additional column called ```nCycles``` that takes selfing into account. 
 
 Note that this pedigree must be complete and sorted ( see Example 1 )before using it with the functions in Section B.
 
