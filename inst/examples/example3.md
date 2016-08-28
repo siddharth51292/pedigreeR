@@ -41,5 +41,6 @@ pedSelect
 10:    8  NA    11
 
 ```
+#### Section C: Producing a valid pedigree object from the output of ```pedSelect```
 [Home](https://github.com/Rpedigree/pedigreeR)
  
