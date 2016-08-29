@@ -25,6 +25,7 @@ It can be readily seen from the following pictoral representation of the pedigre
 
 ```R
 # Applying prunePED to subset the scrambled pedigree 
+library(pedigreeR)
 pedSelect <- prunePED(pedScram,selectVector=c(12,9,11),ngen=2) 
 
 pedSelect
@@ -42,5 +43,26 @@ pedSelect
 
 ```
 #### Section C: Producing a valid pedigree object from the output of ```prunePED```
+
+Following Example 1, we create a sorted and complete pedigree object ```pedFinal``` that can be used for fitting models from the output of prunePED.
+
+```R
+pedEdited <- editPed(sire=pedSelect$sire,dam=pedSelect$dam,label=pedSelect$label)
+pedFinal <- with(pedEdited, pedigree(label=label,sire=sire,dam=dam))
+
+ pedFinal
+   sire  dam
+1  <NA> <NA>
+3  <NA> <NA>
+2  <NA> <NA>
+5  <NA> <NA>
+7     3    2
+6     1    2
+8     5 <NA>
+9     6    7
+11    8 <NA>
+12    1    9
+```
+
 [Home](https://github.com/Rpedigree/pedigreeR)
  
