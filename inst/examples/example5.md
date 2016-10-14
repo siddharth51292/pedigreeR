@@ -73,7 +73,7 @@ for (i in 1:5){
 
 predict_sorted <- predict[order(as.integer(names(predict)))]
 
-result <- cor(predict_sorted,wheat$sdGY[-c(4791,4792)]) 
+result <- cor(predict_sorted,wheat$sdGY) 
 ```
 
 #### OUTPUT
