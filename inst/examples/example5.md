@@ -5,37 +5,37 @@ In this example we will be using cross validation to illustrate the use of pedig
 #### Section A : Import the data and create pedigree objects 
 First we read in the data and remove redundant rows so we can convert the object into a pedigree class.
 
-'''R
+```R
 wheat <- read.table("QuantGen/Data/599_yield_raw-1.prn")
 wheat_ped <- read.csv("QuantGen/Data/WHEAT599PROGENIE.csv")
 wheat_ped <- unique(wheat_ped)
-'''
+```
 
 Renaming the columns, deleting the original names and creating and rescaling the dependent variable
-'''R
+```R
 colnames(wheat) <- c("obs","env","rep","id","gen1","GY")
 wheat <- wheat[-1,]
 wheat$GY <- as.numeric(as.character(wheat$GY))
 wheat$sdGY <- wheat$GY/sd(wheat$GY)
-'''
+```
 
 Creating the final pedigree objects 
 
-'''R
+```R
 library(pedigreeR)
 wheat_ped_edit <- editPed(sire=wheat_ped$gpid1,dam=wheat_ped$gpid2,label=wheat_ped$progenie)
 wheat_ped_final <- with(wheat_ped_edit,pedigree(label=label,sire=sire,dam=dam))
-'''
+```
 
 #### Section B: Split data into training and testing lots
 
 Before splitting the dataset, we truncate it to make it divisible by 5
-'''R
+```R
 wheat <- wheat[-c(4971,4972),]
-'''
+```
 
 Getting the lot indices for training and testing lots. 
-'''R
+```R
 s <- list()
 wheatls <- list()
 
@@ -46,12 +46,12 @@ for (i in 1:5){
   indices <- indices[!(indices %in% s[[i]])]
   wheatls[[i]] <- wheat[s[[i]],]
 }
-'''
+```
 
 #### Section C: Getting Yhat from testing sets and computing the overall correlation between Yhat and Y. 
 Fit data excluding ith lot ( Training sets )  
 
-'''R
+```R
 fm <- list()
 wheat_exclude <- list()
 for (j in 1:5){
@@ -60,10 +60,10 @@ for (j in 1:5){
   wheat_exclude[[j]] <- do.call("rbind",wheatls[isel])
   fm[[j]] <- pedigreemm(sdGY~env+(1|gen1),data=wheat_exclude[[j]],pedigree=list(gen1=wheat_ped_final))
 }
-
+```
 Get Yhat on ith lot from BetaHat computed on fit excluding ith lot ( Testing set ) 
 
-'''R
+```R
 predict <- vector()
 for (i in 1:5){
   
@@ -74,7 +74,7 @@ for (i in 1:5){
 predict_sorted <- predict[order(as.integer(names(predict)))]
 
 result <- cor(predict_sorted,wheat$sdGY[-c(4791,4792)]) 
-'''
+```
 
 #### OUTPUT
 
