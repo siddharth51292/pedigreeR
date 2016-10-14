@@ -1,70 +1,83 @@
-#### Example: Fiting pedigree mixed effects models using pedigreeR and lmer.
+### Example 5: Cross Validation using Pedigree information and mixed effects model.
 
-The mice data comes from an experiment carried out to detect and locate QTLs for complex traits in a 
-mice population ([Valdar et al. 2006a](http://www.ncbi.nlm.nih.gov/pubmed/16832355); [2006b](http://www.ncbi.nlm.nih.gov/pubmed/16888333)). This data has already been 
-analyzed for comparing genome-assisted genetic evaluation methods 
-([Legarra et al. 2008](http://www.ncbi.nlm.nih.gov/pubmed/18757934)).
+In this example we will be using cross validation to illustrate the use of pedigree information in fitting a mixed effects model. 
 
-The information in contained in the file mice.RData (see the object mice), and contains pedigree information,
-Obesity related traits (e.g. BMI) and additional information about body weight, season, month, day, etc. It also contains
-information related to the cages where individuals were grown.
+#### Section A : Import the data and create pedigree objects 
+First we read in the data and remove redundant rows so we can convert the object into a pedigree class.
 
+'''R
+wheat <- read.table("QuantGen/Data/599_yield_raw-1.prn")
+wheat_ped <- read.csv("QuantGen/Data/WHEAT599PROGENIE.csv")
+wheat_ped <- unique(wheat_ped)
+'''
 
-```R
+Renaming the columns, deleting the original names and creating and rescaling the dependent variable
+'''R
+colnames(wheat) <- c("obs","env","rep","id","gen1","GY")
+wheat <- wheat[-1,]
+wheat$GY <- as.numeric(as.character(wheat$GY))
+wheat$sdGY <- wheat$GY/sd(wheat$GY)
+'''
+
+Creating the final pedigree objects 
+
+'''R
 library(pedigreeR)
+wheat_ped_edit <- editPed(sire=wheat_ped$gpid1,dam=wheat_ped$gpid2,label=wheat_ped$progenie)
+wheat_ped_final <- with(wheat_ped_edit,pedigree(label=label,sire=sire,dam=dam))
+'''
 
-#####################################################################
-#Reading the information
-#####################################################################
+#### Section B: Split data into training and testing lots
 
-mice_info= system.file("data/mice.RData",package="pedigreeR")
-load(mice_info)
-rm(mice_info)
+Before splitting the dataset, we truncate it to make it divisible by 5
+'''R
+wheat <- wheat[-c(4971,4972),]
+'''
 
-#Processing the pedigree
-pat=as.character(mice$PAT)
-mat=as.character(mice$MAT)
-id=as.character(mice$SUBJECT.NAME)
+Getting the lot indices for training and testing lots. 
+'''R
+s <- list()
+wheatls <- list()
 
-#Complete the pedigree
-tmp=unique(c(pat,mat))
-            
-pat=c(rep(NA,length(tmp)),pat)
-mat=c(rep(NA,length(tmp)),mat)
-id=c(tmp,id)
+lotsize <- trunc(nrow(wheat)/5)
+indices <- 1:nrow(wheat)
+for (i in 1:5){
+  s[[i]] <- sample(indices,lotsize)
+  indices <- indices[!(indices %in% s[[i]])]
+  wheatls[[i]] <- wheat[s[[i]],]
+}
+'''
 
-tmp=pedigree(pat,mat,id)
+#### Section C: Getting Yhat from testing sets and computing the overall correlation between Yhat and Y. 
+Fit data excluding ith lot ( Training sets )  
 
-#Using the new function, version 0.2.5
-A=as.matrix(getA(tmp))
-rownames(A)=colnames(A)=id
+'''R
+fm <- list()
+wheat_exclude <- list()
+for (j in 1:5){
+  i <- c(1,2,3,4,5)
+  isel <- i[!(i %in% j)]  
+  wheat_exclude[[j]] <- do.call("rbind",wheatls[isel])
+  fm[[j]] <- pedigreemm(sdGY~env+(1|gen1),data=wheat_exclude[[j]],pedigree=list(gen1=wheat_ped_final))
+}
 
-#####################################################################
-#Phenotypes
-#####################################################################
+Get Yhat on ith lot from BetaHat computed on fit excluding ith lot ( Testing set ) 
 
-#Common individuals with phenotypes and pedigree info
-common=intersect(as.character(mice$SUBJECT.NAME),rownames(A))
+'''R
+predict <- vector()
+for (i in 1:5){
+  
+  predict <- append(predict,predict(fm[[i]],newdata=wheatls[[i]]))
+  
+}
 
-index=as.character(mice$SUBJECT.NAME)%in%common
-mice=mice[index,]
+predict_sorted <- predict[order(as.integer(names(predict)))]
 
-index=rownames(A)%in%common
+result <- cor(predict_sorted,wheat$sdGY[-c(4791,4792)]) 
+'''
 
-A=A[index,index]
+#### OUTPUT
 
-#Sort the pedigree information and pheno information so that they match
-index=order(as.character(mice$SUBJECT.NAME))
-mice=mice[index,]
 
-index=order(rownames(A))
-A=A[index,index]
-
-#Check if every thing matches
-if(any(colnames(A)!=as.character(mice$SUBJECT.NAME))) stop("Ordering problem\n")
-
-#Up to here we have phenotypic and genotypic information
-
-```
 [Home](https://github.com/Rpedigree/pedigreeR)
  
