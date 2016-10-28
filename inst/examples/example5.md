@@ -31,7 +31,7 @@ wheat_ped_final <- with(wheat_ped_edit,pedigree(label=label,sire=sire,dam=dam))
 
 Before splitting the dataset, we truncate it to make it divisible by 5
 ```R
-wheat <- wheat[-c(4971,4972),]
+wheat <- wheat[1:(dim(wheat)[1]-2),]
 ```
 
 Getting the lot indices for training and testing lots. 
@@ -61,7 +61,7 @@ for (j in 1:5){
   fm[[j]] <- pedigreemm(sdGY~env+(1|gen1),data=wheat_exclude[[j]],pedigree=list(gen1=wheat_ped_final))
 }
 ```
-Get Yhat on ith lot from BetaHat computed on fit excluding ith lot ( Testing set ) 
+Get Yhat on ith lot (using BetaHat computed on fit excluding ith lot) and put them together. ( Testing sets )
 
 ```R
 predict <- vector()
@@ -70,14 +70,19 @@ for (i in 1:5){
   predict <- append(predict,predict(fm[[i]],newdata=wheatls[[i]]))
   
 }
+```
+Sort the results and compute the correlation with original dataset
 
+```R
 predict_sorted <- predict[order(as.integer(names(predict)))]
-
 result <- cor(predict_sorted,wheat$sdGY) 
 ```
 
 #### OUTPUT
 
-
+```R
+> result
+[1] 0.6999063 
+```
 [Home](https://github.com/Rpedigree/pedigreeR)
  
